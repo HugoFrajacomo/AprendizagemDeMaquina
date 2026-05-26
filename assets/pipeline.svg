@@ -1,0 +1,150 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 350" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f0f16"/>
+      <stop offset="100%" stop-color="#181824"/>
+    </linearGradient>
+    
+    <!-- Node Gradients -->
+    <linearGradient id="nodeGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#800020"/>
+      <stop offset="100%" stop-color="#4d0013"/>
+    </linearGradient>
+    <linearGradient id="nodeGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9B111E"/>
+      <stop offset="100%" stop-color="#60070e"/>
+    </linearGradient>
+    <linearGradient id="nodeGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#b82e3b"/>
+      <stop offset="100%" stop-color="#73101b"/>
+    </linearGradient>
+    <linearGradient id="nodeGrad4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D4AF37"/>
+      <stop offset="100%" stop-color="#997d21"/>
+    </linearGradient>
+    <linearGradient id="nodeGrad5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#008080"/>
+      <stop offset="100%" stop-color="#004d4d"/>
+    </linearGradient>
+    <linearGradient id="nodeGrad6" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4B0082"/>
+      <stop offset="100%" stop-color="#280047"/>
+    </linearGradient>
+    
+    <!-- Arrow Head -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#8b949e"/>
+    </marker>
+    
+    <!-- Neon Drop Shadow -->
+    <filter id="neonGlow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#b82e3b" flood-opacity="0.3"/>
+    </filter>
+    <filter id="goldGlow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#D4AF37" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+
+  <style>
+    .title { font-family: 'Segoe UI', Roboto, Helvetica, sans-serif; font-size: 22px; font-weight: 800; fill: #ffffff; letter-spacing: 1px; }
+    .subtitle { font-family: 'Segoe UI', Roboto, Helvetica, sans-serif; font-size: 12px; fill: #8b949e; letter-spacing: 0.5px; }
+    .node-title { font-family: 'Segoe UI', Roboto, Helvetica, sans-serif; font-size: 14px; font-weight: 700; fill: #ffffff; }
+    .node-text { font-family: 'Segoe UI', Roboto, Helvetica, sans-serif; font-size: 11px; fill: #e1e4e8; }
+    .arrow-text { font-family: 'Segoe UI', Roboto, Helvetica, sans-serif; font-size: 10px; fill: #8b949e; font-weight: bold; }
+    .glow-line { stroke: #b82e3b; stroke-width: 2; fill: none; stroke-dasharray: 4,4; }
+  </style>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="url(#bgGrad)" rx="15"/>
+  
+  <!-- Outer Border -->
+  <rect width="99.6%" height="99%" x="0.2%" y="0.5%" fill="none" stroke="#2d3139" stroke-width="1.5" rx="15"/>
+
+  <!-- Header -->
+  <g transform="translate(40, 45)">
+    <text class="title" x="0" y="0">PIPELINE DE MACHINE LEARNING</text>
+    <text class="subtitle" x="0" y="20">Fluxo completo de processamento e modelagem preditiva da qualidade de vinhos tintos</text>
+  </g>
+
+  <!-- Node 1: Raw Data -->
+  <g transform="translate(40, 110)" filter="url(#neonGlow)">
+    <rect width="130" height="150" rx="10" fill="url(#nodeGrad1)" stroke="#ff4d6d" stroke-width="1.5"/>
+    <text class="node-title" x="15" y="28">1. Dataset</text>
+    <text class="node-text" x="15" y="55">Vinhos Tintos</text>
+    <text class="node-text" x="15" y="75">1.599 Amostras</text>
+    <text class="node-text" x="15" y="95">11 Atributos</text>
+    <text class="node-text" x="15" y="115">Químicos (pH,</text>
+    <text class="node-text" x="15" y="130">álcool, acidez...)</text>
+  </g>
+
+  <!-- Arrow 1 -> 2 -->
+  <path d="M 170 185 L 202 185" fill="none" stroke="#8b949e" stroke-width="2" marker-end="url(#arrow)"/>
+  
+  <!-- Node 2: Outliers -->
+  <g transform="translate(210, 110)">
+    <rect width="130" height="150" rx="10" fill="url(#nodeGrad2)" stroke="#ff7070" stroke-width="1"/>
+    <text class="node-title" x="15" y="28">2. Outliers</text>
+    <text class="node-text" x="15" y="55">Análise Boxplot</text>
+    <text class="node-text" x="15" y="75">Identificação por</text>
+    <text class="node-text" x="15" y="95">limiares IQR:</text>
+    <text class="node-text" x="15" y="115">• Açúcar &gt; 3.65</text>
+    <text class="node-text" x="15" y="130">• Álcool &gt; 13.5</text>
+  </g>
+
+  <!-- Arrow 2 -> 3 -->
+  <path d="M 340 185 L 372 185" fill="none" stroke="#8b949e" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Node 3: Feature Eng -->
+  <g transform="translate(380, 110)">
+    <rect width="130" height="150" rx="10" fill="url(#nodeGrad3)" stroke="#ff8591" stroke-width="1"/>
+    <text class="node-title" x="15" y="28">3. Features</text>
+    <text class="node-text" x="15" y="55">Classificação:</text>
+    <text class="node-text" x="15" y="75">• Doçura do vinho</text>
+    <text class="node-text" x="15" y="92">  (seco/suave)</text>
+    <text class="node-text" x="15" y="112">• Mercadológica</text>
+    <text class="node-text" x="15" y="129">  (popular/premium)</text>
+  </g>
+
+  <!-- Arrow 3 -> 4 -->
+  <path d="M 510 185 L 542 185" fill="none" stroke="#8b949e" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Node 4: Scaling -->
+  <g transform="translate(550, 110)">
+    <rect width="130" height="150" rx="10" fill="url(#nodeGrad4)" stroke="#ffd700" stroke-width="1"/>
+    <text class="node-title" x="15" y="28">4. Normalização</text>
+    <text class="node-text" x="15" y="55">StandardScaler</text>
+    <text class="node-text" x="15" y="75">Média = 0 e</text>
+    <text class="node-text" x="15" y="95">Desvio Padrão = 1</text>
+    <text class="node-text" x="15" y="115">Evita viés de</text>
+    <text class="node-text" x="15" y="130">escala nos dados</text>
+  </g>
+
+  <!-- Arrow 4 -> 5 -->
+  <path d="M 680 185 L 712 185" fill="none" stroke="#8b949e" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Node 5: Split -->
+  <g transform="translate(720, 110)">
+    <rect width="100" height="150" rx="10" fill="url(#nodeGrad5)" stroke="#00b3b3" stroke-width="1"/>
+    <text class="node-title" x="12" y="28">5. Divisão</text>
+    <text class="node-text" x="12" y="55">Treino (80%)</text>
+    <text class="node-text" x="12" y="75">Ajuste de pesos</text>
+    <text class="node-text" x="12" y="100">Teste (20%)</text>
+    <text class="node-text" x="12" y="120">Avaliação real</text>
+    <text class="node-text" x="12" y="135">de acurácia</text>
+  </g>
+
+  <!-- Arrow 5 -> 6 -->
+  <path d="M 820 185 L 852 185" fill="none" stroke="#8b949e" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Node 6: Models -->
+  <g transform="translate(860, 110)" filter="url(#goldGlow)">
+    <rect width="100" height="150" rx="10" fill="url(#nodeGrad6)" stroke="#8a2be2" stroke-width="1.5"/>
+    <text class="node-title" x="12" y="28">6. Modelos</text>
+    <text class="node-text" x="12" y="52">• GaussianNB</text>
+    <text class="node-text" x="12" y="70">• KNN (k=5)</text>
+    <text class="node-text" x="12" y="88">• Regras CN2</text>
+    <text class="node-text" x="12" y="106">• TreeMap</text>
+    <text class="node-text" x="12" y="124">• Random Forest</text>
+  </g>
+</svg>

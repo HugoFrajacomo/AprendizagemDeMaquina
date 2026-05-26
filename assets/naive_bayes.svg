@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 350" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f0f16"/>
+      <stop offset="100%" stop-color="#181824"/>
+    </linearGradient>
+    
+    <!-- Gaussian Curves Gradients -->
+    <linearGradient id="curve1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ff4d6d" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#ff4d6d" stop-opacity="0.05"/>
+    </linearGradient>
+    <linearGradient id="curve2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#00b3b3" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#00b3b3" stop-opacity="0.05"/>
+    </linearGradient>
+    
+    <!-- Box Gradient for Math Formula -->
+    <linearGradient id="formulaBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#212230" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#1b1c26" stop-opacity="0.9"/>
+    </linearGradient>
+
+    <!-- Neon shadows -->
+    <filter id="glow1" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#ff4d6d" flood-opacity="0.5"/>
+    </filter>
+    <filter id="glow2" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#00b3b3" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <style>
+    .title { font-family: 'Segoe UI', Roboto, Helvetica, sans-serif; font-size: 22px; font-weight: 800; fill: #ffffff; letter-spacing: 1px; }
+    .subtitle { font-family: 'Segoe UI', Roboto, Helvetica, sans-serif; font-size: 12px; fill: #8b949e; letter-spacing: 0.5px; }
+    .formula-title { font-family: 'Segoe UI', Roboto, Helvetica, sans-serif; font-size: 13px; font-weight: 700; fill: #ffd700; }
+    .formula-text { font-family: 'Courier New', monospace; font-size: 13px; fill: #e1e4e8; }
+    .latex-style { font-family: 'Georgia', serif; font-style: italic; font-size: 14px; fill: #ffffff; }
+    .label { font-family: 'Segoe UI', Roboto, Helvetica, sans-serif; font-size: 12px; font-weight: bold; }
+    .axis-label { font-family: 'Segoe UI', Roboto, Helvetica, sans-serif; font-size: 11px; fill: #8b949e; }
+  </style>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="url(#bgGrad)" rx="15"/>
+  <rect width="99.6%" height="99%" x="0.2%" y="0.5%" fill="none" stroke="#2d3139" stroke-width="1.5" rx="15"/>
+
+  <!-- Header -->
+  <g transform="translate(40, 45)">
+    <text class="title" x="0" y="0">CLASSIFICADOR GAUSSIAN NAIVE BAYES</text>
+    <text class="subtitle" x="0" y="20">Distribuição contínua de probabilidades (Exemplo: Teor Alcoólico por Qualidade de Vinho)</text>
+  </g>
+
+  <!-- Box Formula -->
+  <g transform="translate(540, 100)">
+    <rect width="420" height="190" rx="12" fill="url(#formulaBg)" stroke="#2d3042" stroke-width="2"/>
+    <text class="formula-title" x="20" y="30">Teorema de Bayes Gaussiano</text>
+    
+    <!-- Bayes Equation -->
+    <text class="latex-style" x="20" y="65">P(Classe | x) ∝ P(Classe) · ∏ P(x_i | Classe)</text>
+    
+    <text class="node-text" font-family="'Segoe UI', sans-serif" font-size="11px" fill="#8b949e" x="20" y="90">Onde a densidade de probabilidade da feature x_i é:</text>
+    
+    <!-- Gaussian PDF Equation -->
+    <rect x="20" y="105" width="380" height="60" rx="6" fill="#151620" stroke="#ffd700" stroke-opacity="0.3" stroke-width="1"/>
+    
+    <text class="latex-style" font-size="15px" x="40" y="141">P(x_i | Classe) = </text>
+    <!-- Fraction division line -->
+    <line x1="170" y1="135" x2="230" y2="135" stroke="#ffffff" stroke-width="1.5"/>
+    <text class="latex-style" font-size="13px" x="195" y="128">1</text>
+    <text class="latex-style" font-size="13px" x="172" y="150">√2πσ²</text>
+    
+    <text class="latex-style" font-size="15px" x="240" y="141">· e</text>
+    <!-- Exponent power -->
+    <text class="latex-style" font-size="11px" x="260" y="123">-(x_i - μ)² / 2σ²</text>
+    
+    <!-- Legend indicators -->
+    <circle cx="350" cy="120" r="5" fill="#ff4d6d"/>
+    <text class="node-text" font-family="sans-serif" font-size="10px" fill="#e1e4e8" x="360" y="123">Baixa Qualidade</text>
+    
+    <circle cx="350" cy="145" r="5" fill="#00b3b3"/>
+    <text class="node-text" font-family="sans-serif" font-size="10px" fill="#e1e4e8" x="360" y="148">Alta Qualidade</text>
+  </g>
+
+  <!-- Plot Area -->
+  <g transform="translate(60, 95)">
+    <!-- X and Y axis -->
+    <line x1="40" y1="200" x2="440" y2="200" stroke="#8b949e" stroke-width="2"/>
+    <line x1="40" y1="20" x2="40" y2="200" stroke="#8b949e" stroke-width="1.5"/>
+    <text class="axis-label" x="430" y="215">Teor Alcoólico (Feature x)</text>
+    <text class="axis-label" x="10" y="15" transform="rotate(-90 10 15)">Densidade P(x|C)</text>
+
+    <!-- Curve 1 (Baixa Qualidade - Vermelha) -->
+    <!-- Gaussian curve center around 140, height 130, standard deviation roughly 50 -->
+    <!-- path generated mathematically: center x=160, max height y=50 (which is 200-150) -->
+    <path d="M 40 200 
+             C 80 200, 110 190, 130 150 
+             C 150 110, 170 50, 190 50
+             C 210 50, 230 110, 250 150
+             C 270 190, 300 200, 340 200" 
+          fill="url(#curve1)" stroke="#ff4d6d" stroke-width="3" filter="url(#glow1)"/>
+          
+    <!-- Curve 2 (Alta Qualidade - Verde) -->
+    <!-- Gaussian curve center around 290, taller, std dev smaller -->
+    <path d="M 140 200
+             C 190 200, 220 180, 240 120
+             C 260 60, 275 25, 290 25
+             C 305 25, 320 60, 340 120
+             C 360 180, 390 200, 440 200" 
+          fill="url(#curve2)" stroke="#00b3b3" stroke-width="3" filter="url(#glow2)"/>
+
+    <!-- Axis ticks -->
+    <line x1="190" y1="200" x2="190" y2="204" stroke="#8b949e" stroke-width="2"/>
+    <text class="axis-label" x="180" y="218">μ_baixa</text>
+    
+    <line x1="290" y1="200" x2="290" y2="204" stroke="#8b949e" stroke-width="2"/>
+    <text class="axis-label" x="280" y="218">μ_alta</text>
+
+    <!-- Sample value (Amostra de teste) -->
+    <line x1="240" y1="40" x2="240" y2="200" stroke="#ffd700" stroke-width="1.5" stroke-dasharray="4,4"/>
+    <circle cx="240" cy="200" r="4" fill="#ffd700"/>
+    <text class="axis-label" fill="#ffd700" font-weight="bold" x="215" y="228">x_amostra</text>
+
+    <!-- Probabilities indicators (Intersections) -->
+    <!-- Height for Red curve at x=240 is approx y=165 (35px high) -->
+    <circle cx="240" cy="165" r="4.5" fill="#ff4d6d" stroke="#ffffff" stroke-width="1"/>
+    <path d="M 240 165 L 180 145" fill="none" stroke="#ff4d6d" stroke-width="1"/>
+    <text class="node-text" font-size="10px" fill="#ff4d6d" x="90" y="142">P(x | Baixa) = 0.22</text>
+    
+    <!-- Height for Green curve at x=240 is approx y=120 (80px high) -->
+    <circle cx="240" cy="120" r="4.5" fill="#00b3b3" stroke="#ffffff" stroke-width="1"/>
+    <path d="M 240 120 L 310 95" fill="none" stroke="#00b3b3" stroke-width="1"/>
+    <text class="node-text" font-size="10px" fill="#00b3b3" x="315" y="92">P(x | Alta) = 0.54</text>
+    
+    <text class="node-text" font-weight="bold" fill="#ffffff" x="80" y="250">
+      Decisão: Como P(x|Alta) &gt; P(x|Baixa), classificado como ALTA QUALIDADE
+    </text>
+  </g>
+</svg>

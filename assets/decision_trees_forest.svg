@@ -1,0 +1,179 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 350" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f0f16"/>
+      <stop offset="100%" stop-color="#181824"/>
+    </linearGradient>
+
+    <!-- Node Gradients -->
+    <linearGradient id="rootNode" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4B0082"/>
+      <stop offset="100%" stop-color="#2d0052"/>
+    </linearGradient>
+    <linearGradient id="internalNode" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#314e7a"/>
+      <stop offset="100%" stop-color="#1f3250"/>
+    </linearGradient>
+    <linearGradient id="leafHigh" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#008080"/>
+      <stop offset="100%" stop-color="#004d4d"/>
+    </linearGradient>
+    <linearGradient id="leafLow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#800020"/>
+      <stop offset="100%" stop-color="#4d0013"/>
+    </linearGradient>
+
+    <!-- Arrow Head -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#8b949e"/>
+    </marker>
+    
+    <!-- Neon Drop Shadow -->
+    <filter id="neonGlow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#8a2be2" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <style>
+    .title { font-family: 'Segoe UI', Roboto, Helvetica, sans-serif; font-size: 22px; font-weight: 800; fill: #ffffff; letter-spacing: 1px; }
+    .subtitle { font-family: 'Segoe UI', Roboto, Helvetica, sans-serif; font-size: 12px; fill: #8b949e; letter-spacing: 0.5px; }
+    .panel-title { font-family: 'Segoe UI', Roboto, Helvetica, sans-serif; font-size: 15px; font-weight: 700; fill: #ffd700; }
+    .node-title { font-family: 'Segoe UI', Roboto, Helvetica, sans-serif; font-size: 11px; font-weight: 700; fill: #ffffff; text-anchor: middle; }
+    .node-text { font-family: 'Segoe UI', Roboto, Helvetica, sans-serif; font-size: 9px; fill: #e1e4e8; text-anchor: middle; }
+    .branch-text { font-family: 'Segoe UI', Roboto, Helvetica, sans-serif; font-size: 10px; font-weight: bold; fill: #8b949e; }
+    .forest-text { font-family: 'Segoe UI', Roboto, Helvetica, sans-serif; font-size: 10px; fill: #e1e4e8; }
+  </style>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="url(#bgGrad)" rx="15"/>
+  <rect width="99.6%" height="99%" x="0.2%" y="0.5%" fill="none" stroke="#2d3139" stroke-width="1.5" rx="15"/>
+
+  <!-- Header -->
+  <g transform="translate(40, 45)">
+    <text class="title" x="0" y="0">DECISION TREE vs. RANDOM FOREST</text>
+    <text class="subtitle" x="0" y="20">Comparativo conceitual entre a Árvore de Decisão por Entropia (TreeMap) e o comitê votante (Random Forest)</text>
+  </g>
+
+  <!-- LINE SEPARATOR -->
+  <line x1="500" y1="90" x2="500" y2="310" stroke="#2d3139" stroke-width="1.5" stroke-dasharray="5,5"/>
+
+  <!-- LEFT PANEL: DECISION TREE -->
+  <g transform="translate(40, 90)">
+    <text class="panel-title" x="0" y="10">Árvore de Decisão Única (TreeMap)</text>
+    
+    <!-- Level 1: Root Node -->
+    <g transform="translate(160, 40)">
+      <rect x="-65" y="-18" width="130" height="36" rx="6" fill="url(#rootNode)" stroke="#8a2be2" stroke-width="1"/>
+      <text class="node-title" x="0" y="-3">Root Node</text>
+      <text class="node-text" x="0" y="9">Álcool &gt; 10.5%</text>
+    </g>
+
+    <!-- Branch Lines -->
+    <!-- Left Branch (No) -->
+    <path d="M 125 65 L 85 95" fill="none" stroke="#8b949e" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <text class="branch-text" x="75" y="75">Não</text>
+    
+    <!-- Right Branch (Yes) -->
+    <path d="M 225 65 L 265 95" fill="none" stroke="#8b949e" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <text class="branch-text" x="245" y="75">Sim</text>
+
+    <!-- Level 2: Left Internal Node -->
+    <g transform="translate(75, 115)">
+      <rect x="-60" y="-18" width="120" height="36" rx="6" fill="url(#internalNode)" stroke="#314e7a" stroke-width="1"/>
+      <text class="node-title" x="0" y="-3">Acidez Volátil &lt; 0.52</text>
+      <text class="node-text" x="0" y="9">Entropia: 0.98</text>
+    </g>
+
+    <!-- Level 2: Right Leaf (Instant prediction) -->
+    <g transform="translate(275, 115)">
+      <rect x="-55" y="-18" width="110" height="36" rx="6" fill="url(#leafHigh)" stroke="#00b3b3" stroke-width="1"/>
+      <text class="node-title" x="0" y="-3">Alta Qualidade</text>
+      <text class="node-text" x="0" y="9">Folha Pura (100%)</text>
+    </g>
+
+    <!-- Level 2 Branches -->
+    <!-- Left Leaf (No) -->
+    <path d="M 50 140 L 30 170" fill="none" stroke="#8b949e" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <text class="branch-text" x="20" y="153">Não</text>
+
+    <!-- Right Leaf (Yes) -->
+    <path d="M 100 140 L 120 170" fill="none" stroke="#8b949e" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <text class="branch-text" x="115" y="153">Sim</text>
+
+    <!-- Level 3 Leaf Nodes -->
+    <!-- Leaf Low -->
+    <g transform="translate(25, 190)">
+      <rect x="-45" y="-18" width="90" height="36" rx="6" fill="url(#leafLow)" stroke="#ff4d6d" stroke-width="1"/>
+      <text class="node-title" x="0" y="-3">Baixa</text>
+      <text class="node-text" x="0" y="9">Entropia: 0.00</text>
+    </g>
+    <!-- Leaf High -->
+    <g transform="translate(125, 190)">
+      <rect x="-45" y="-18" width="90" height="36" rx="6" fill="url(#leafHigh)" stroke="#00b3b3" stroke-width="1"/>
+      <text class="node-title" x="0" y="-3">Alta</text>
+      <text class="node-text" x="0" y="9">Entropia: 0.15</text>
+    </g>
+  </g>
+
+  <!-- RIGHT PANEL: RANDOM FOREST -->
+  <g transform="translate(540, 90)" filter="url(#neonGlow)">
+    <text class="panel-title" x="0" y="10">Random Forest Ensemble (N Estimadores)</text>
+    
+    <!-- Multi Tree representations -->
+    <!-- Tree 1 -->
+    <g transform="translate(40, 50)" scale="0.7">
+      <rect x="-40" y="-15" width="80" height="30" rx="4" fill="url(#rootNode)"/>
+      <text class="node-title" x="0" y="4" font-size="12px">Árvore 1</text>
+      <path d="M -20 20 L -35 40 M 20 20 L 35 40" stroke="#8b949e" stroke-width="2"/>
+      <circle cx="-35" cy="45" r="8" fill="#008080"/>
+      <circle cx="35" cy="45" r="8" fill="#800020"/>
+      <!-- Prediction -->
+      <rect x="-35" y="65" width="70" height="18" rx="3" fill="#004d4d"/>
+      <text class="node-title" x="0" y="77" font-size="10px">Voto: Alta</text>
+    </g>
+
+    <!-- Tree 2 -->
+    <g transform="translate(170, 50)" scale="0.7">
+      <rect x="-40" y="-15" width="80" height="30" rx="4" fill="url(#rootNode)"/>
+      <text class="node-title" x="0" y="4" font-size="12px">Árvore 2</text>
+      <path d="M -20 20 L -35 40 M 20 20 L 35 40" stroke="#8b949e" stroke-width="2"/>
+      <circle cx="-35" cy="45" r="8" fill="#800020"/>
+      <circle cx="35" cy="45" r="8" fill="#800020"/>
+      <!-- Prediction -->
+      <rect x="-35" y="65" width="70" height="18" rx="3" fill="#4d0013"/>
+      <text class="node-title" x="0" y="77" font-size="10px">Voto: Baixa</text>
+    </g>
+
+    <!-- Tree 3 -->
+    <g transform="translate(300, 50)" scale="0.7">
+      <rect x="-40" y="-15" width="80" height="30" rx="4" fill="url(#rootNode)"/>
+      <text class="node-title" x="0" y="4" font-size="12px">Árvore N</text>
+      <path d="M -20 20 L -35 40 M 20 20 L 35 40" stroke="#8b949e" stroke-width="2"/>
+      <circle cx="-35" cy="45" r="8" fill="#008080"/>
+      <circle cx="35" cy="45" r="8" fill="#008080"/>
+      <!-- Prediction -->
+      <rect x="-35" y="65" width="70" height="18" rx="3" fill="#004d4d"/>
+      <text class="node-title" x="0" y="77" font-size="10px">Voto: Alta</text>
+    </g>
+
+    <!-- Aggregate Voting Block -->
+    <g transform="translate(20, 150)">
+      <rect x="0" y="0" width="380" height="55" rx="8" fill="#151620" stroke="#2d3042" stroke-width="1.5"/>
+      <text class="forest-text" font-weight="bold" x="15" y="22">Mecanismo de Votação por Comitê (Ensemble):</text>
+      
+      <!-- Votes Count -->
+      <text class="forest-text" x="15" y="40">Votos Alta Qualidade:</text>
+      <text class="forest-text" font-weight="bold" fill="#00ffd2" x="135" y="40">65% (Ensemble Majority)</text>
+
+      <text class="forest-text" x="245" y="40">Votos Baixa:</text>
+      <text class="forest-text" font-weight="bold" fill="#ff4d6d" x="315" y="40">35%</text>
+    </g>
+
+    <!-- Final Choice Badge -->
+    <g transform="translate(110, 215)">
+      <rect x="0" y="0" width="200" height="30" rx="6" fill="#004d4d" stroke="#00b3b3" stroke-width="1"/>
+      <text class="forest-text" font-weight="bold" fill="#00ffd2" x="100" y="19" text-anchor="middle">Resultado: ALTA QUALIDADE</text>
+    </g>
+  </g>
+</svg>
